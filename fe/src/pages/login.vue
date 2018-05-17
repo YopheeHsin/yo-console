@@ -12,11 +12,12 @@ export default {
 	methods: {
 		getList() {
 			this.$http.get('/api/1.php')
-				.then(function () {
-
+				/* eslint-disable */
+				.then(dt => {
+					this.username = dt.msg
 				})
-				.catch(function () {
-
+				.catch(error => {
+					this.username = 'loginError'
 				})
 		}
 	},

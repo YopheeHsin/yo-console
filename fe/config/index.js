@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
         '/api': {
-            target: 'http://php.169.254.82.138.xip.io:7888',
+            target: 'http://php.192.168.216.164.xip.io:7888',
             changeOrigin: true
         }
     },

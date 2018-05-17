@@ -6,8 +6,17 @@ import App from './App'
 import router from './router'
 
 Vue.config.productionTip = false
-Vue.prototype.$http = axios
 Vue.use(ElementUI)
+
+axios.defaults.timeout = 30000
+axios.interceptors.response.use(({ data }) => {
+	if (data.code > 0) Vue.prototype.$message.error(data.msg)
+	return data
+}, error => {
+	Vue.prototype.$message.error('mainError')
+	return Promise.reject(error)
+})
+Vue.prototype.$http = axios
 
 new Vue({
 	router,
